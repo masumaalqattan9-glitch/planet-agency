@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>وكالة الكواكب للسياحة والسفر</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>وكالة الكواكب للسياحة والسفر</h1>
+        <p>خليك مستعد تقلع معنا الى اي كوكب تحلم فيه! 🌍✈️</p>
+    </header>
+
+    <nav class="main-menu">
+        <button class="menu-btn" data-section="home">الرئيسية</button>
+        <button class="menu-btn" data-section="offers">أحدث العروض</button>
+        <button class="menu-btn" data-section="visa">حجز موعد الفيزا</button>
+        <button class="menu-btn" data-section="package">طلب رحلة (باقة)</button>
+    </nav>
+
+    <!-- الصفحة الرئيسية -->
+    <section id="home" class="section active">
+        <h2 class="section-title">أهلاً بك مع وكالة الكواكب للسياحة والسفر</h2>
+        <p class="welcome-text">
+            اختر أحد الخيارات التالية:
+        </p>
+        <div class="home-options">
+            <div class="option-card" data-section="offers">
+                <h3>1- تصفح أحدث العروض</h3>
+                <p>اكتشف وجهات مميزة جاهزة بالسعر والخدمات.</p>
+            </div>
+            <div class="option-card" data-section="visa">
+                <h3>2- احجز موعد لفيزتك واترك الباقي علينا</h3>
+                <p>نعبي لك كل النماذج ونجهز لك كل المتطلبات.</p>
+            </div>
+            <div class="option-card" data-section="package">
+                <h3>3- أرسل طلب رحلتك (باقة خاصة)</h3>
+                <p>صممي رحلتك حسب مزاجك وميزانيتك.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- أحدث العروض -->
+    <section id="offers" class="section">
+        <h2 class="section-title">أحدث العروض</h2>
+        <div class="offer-card">
+            <img src="https://via.placeholder.com/400x220?text=%D8%A7%D8%B3%D8%B7%D9%86%D8%A8%D9%88%D9%84" alt="اسطنبول">
+            <div class="offer-content">
+                <h3>اسطنبول - تركيا</h3>
+                <ul>
+                    <li>٧ ليالي</li>
+                    <li>فندق ٤ نجوم</li>
+                    <li>جولات سياحية يومية</li>
+                    <li>شرائح إنترنت</li>
+                    <li>٣٥٠٠ ريال للشخصين</li>
+                </ul>
+                <button class="primary-btn">اطلب هذا العرض</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- حجز موعد الفيزا -->
+    <section id="visa" class="section">
+        <h2 class="section-title">احجز موعد لفيزتك واترك الباقي علينا</h2>
+
+        <form id="visaForm" class="main-form">
+            <div class="field-group">
+                <label for="visaType">نوع الفيزا</label>
+                <select id="visaType" name="visaType" required>
+                    <option value="">اختر نوع الفيزا</option>
+                    <option value="schengen">فيزا شنغن</option>
+                    <option value="russian">فيزا روسية</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label for="numPersons">عدد الأشخاص</label>
+                <input type="number" id="numPersons" name="numPersons" min="1" value="1" required>
+            </div>
+
+            <div id="personsContainer"></div>
+
+            <hr>
+
+            <p class="note-title">ملاحظات مهمة:</p>
+            <ul class="note-list">
+                <li>٤ صور شخصية حديثة لكل شخص.</li>
+                <li>تعريف راتب مصدّق من جهة العمل ووزارة التجارة.</li>
+                <li>كشف حساب بنكي لمدة ٣ أو ٦ شهور، وبمبلغ لا يقل عن ٣٠ ألف ريال.</li>
+                <li>تُحضِر جميع الأوراق معك للسفارة يوم الموعد.</li>
+            </ul>
+
+            <p class="note-title">خدمات نقدمها ضمن رسوم الفيزا:</p>
+            <ul class="note-list">
+                <li>حجز الموعد</li>
+                <li>حجز الفندق</li>
+                <li>حجز التذاكر</li>
+                <li>تأمين سفر</li>
+                <li>تعبئة نموذج الطلب</li>
+                <li>ترجمة بطاقة العائلة وبطاقة الأحوال</li>
+                <li>خطاب التكفّل</li>
+            </ul>
+
+            <button type="submit" class="primary-btn">إرسال طلب الفيزا</button>
+        </form>
+    </section>
+
+    <!-- طلب الرحلة (الباقة) -->
+    <section id="package" class="section">
+        <h2 class="section-title">طلب رحلة (تصميم باقة)</h2>
+        <form id="packageForm" class="main-form">
+            <div class="field-group">
+                <label for="destination">الوجهة</label>
+                <input type="text" id="destination" name="destination" placeholder="مثال: اسطنبول، باريس، دبي..." required>
+            </div>
+
+            <div class="field-group-inline">
+                <div>
+                    <label for="adults">عدد البالغين (+١٢)</label>
+                    <input type="number" id="adults" name="adults" min="1" value="1" required>
+                </div>
+                <div>
+                    <label for="children">عدد الأطفال (٢ - ١٢)</label>
+                    <input type="number" id="children" name="children" min="0" value="0">
+                </div>
+                <div>
+                    <label for="infants">عدد الرضع (٠ - ٢)</label>
+                    <input type="number" id="infants" name="infants" min="0" value="0">
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label for="departureAirport">مطار الإقلاع</label>
+                <input type="text" id="departureAirport" name="departureAirport" placeholder="مثال: جدة، الرياض..." required>
+            </div>
+
+            <div class="field-group">
+                <label for="budget">الميزانية التقريبية (بالريال)</label>
+                <input type="number" id="budget" name="budget" min="0" placeholder="مثال: 5000" required>
+            </div>
+
+            <div class="field-group">
+                <label for="specialRequests">طلبات خاصة</label>
+                <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="مثال: فندق قريب من البحر، غرفة مطلة، رحلات معينة..."></textarea>
+            </div>
+
+            <button type="submit" class="primary-btn">إرسال طلب الباقة</button>
+        </form>
+    </section>
+
+    <!-- Firebase (compat) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+    <script>
+      // نفس بيانات مشروعك
+      const firebaseConfig = {
+        apiKey: "AIzaSyAMfDWDpGYG7utv521Y-XcjsD_T_aGaJqU",
+        authDomain: "planet-agency-cebc3.firebaseapp.com",
+        projectId: "planet-agency-cebc3",
+        storageBucket: "planet-agency-cebc3.firebasestorage.app",
+        messagingSenderId: "152043747868",
+        appId: "1:152043747868:web:af471b009ea63471b97dd9",
+        measurementId: "G-W4LN68S9GL"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+
+    <!-- سكربتك العادي -->
+    <script src="app.js"></script>
+</body>
+</html>
