@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>وكالة الكواكب للسياحة والسفر</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-wrap">
+            <!-- اللوقو planetslogo.png حطيه جنب index.html -->
+            <img src="planetslogo.png" alt="Planet Agency Logo" class="logo-img">
+            <div>
+                <h1>وكالة الكواكب للسياحة والسفر</h1>
+                <p>خليك مستعد تقلع معنا إلى أي كوكب تحلم فيه 🌍✈️</p>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-menu">
+        <button class="menu-btn" data-section="home">الرئيسية</button>
+        <button class="menu-btn" data-section="offers">أحدث العروض</button>
+        <button class="menu-btn" data-section="visa">حجز موعد الفيزا</button>
+        <button class="menu-btn" data-section="package">طلب رحلة (باقة)</button>
+        <button class="menu-btn" data-section="destinations">الدول السياحية</button>
+    </nav>
+
+    <!-- الصفحة الرئيسية -->
+    <section id="home" class="section active">
+        <h2 class="section-title">أهلاً بك مع وكالة الكواكب للسياحة والسفر</h2>
+        <p class="welcome-text">
+            اختارأحد الخيارات التالية وابدأ تخطيط رحلتك:
+        </p>
+        <div class="home-options">
+            <div class="option-card" data-section="offers">
+                <h3>1- تصفح أحدث العروض</h3>
+                <p>اكتشف وجهات مميزة جاهزة بالسعر والخدمات.</p>
+            </div>
+            <div class="option-card" data-section="visa">
+                <h3>2- احجزي موعد لفيزتك واتركي الباقي علينا</h3>
+                <p>نعبي لك النماذج ونجمع الأوراق ونرتب لك الموعد.</p>
+            </div>
+            <div class="option-card" data-section="package">
+                <h3>3- أرسلي طلب رحلتك (باق خاصة)</h3>
+                <p>صمم رحلتك حسب مزاجك وميزانيتك وعدد أفراد عئلتك.</p>
+            </div>
+            <div class="option-card" data-section="destinations">
+                <h3>4- تعرّف على أهم الدول الياحية</h3>
+                <p>نبذة سريعة عن الوجهات اللي نخدمها وأشهر معالمها.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- أحدث العروض -->
+    <section id="offers" class="section">
+        <h2 class="section-title">أحدث العروض</h2>
+
+        <!-- عرض اسطنبول -->
+        <div class="offer-card">
+            <img src="images/istanbul-offer.jpg" alt="عرض اسطنبول" class="offer-img">
+            <div class="offer-content">
+                <h3>اسطنبول - تركيا</h3>
+                <ul>
+                    <li>٧ ليالي</li>
+                    <li>فندق ٤ نجوم</li>
+                    <li>جولات سياحية يومية</li>
+                    <li>شرائح إنترنت</li>
+                    <li>٣٥٠٠ ريال للشخصين</li>
+                </ul>
+                <button class="primary-btn">اطلب هذا العرض</button>
+            </div>
+        </div>
+
+        <!-- تقدرين تضيفين عروض ثانية بنسخ نفس البلوك وتعدلين -->
+    </section>
+
+    <!-- حجز موعد الفيزا -->
+    <section id="visa" class="section">
+        <h2 class="section-title">احجز موعد لفيزتك واترك الباقي علينا</h2>
+
+        <p class="welcome-text">
+            عبّي هذي البيانات، وراح نتواصل معك على جوالك ونرسل لك أقرب مواعيد متاحة للسفارة حسب منطقتك 🌍.
+        </p>
+
+        <form id="visaForm" class="main-form">
+            <div class="field-group">
+                <label for="visaType">نوع الفيزا</label>
+                <select id="visaType" name="visaType" required>
+                    <option value="">اختر نوع الفيزا</option>
+                    <option value="schengen">فيزا شنغن</option>
+                    <option value="russian">فيزا روسية</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label for="customerPhone">رقم الجوال للتواصل (واتساب)</label>
+                <input type="text" id="customerPhone" name="customerPhone" placeholder="مثال: 05xxxxxxxx" required>
+            </div>
+
+            <div class="field-group">
+                <label for="customerRegion">المدينة / المنطقة</label>
+				<input type="text" id="customerRegion" name="customerRegion" placeholder="مثال: جدة، الرياض، الشرقية..." required>
+
+            </div>
+
+            <div class="field-group">
+                <label for="numPersons">عدد الأشخاص</label>
+                <input type="number" id="numPersons" name="numPersons" min="1" value="1" required>
+            </div>
+
+            <div id="personsContainer"></div>
+
+            <hr>
+
+            <h3 class="note-title">رفع المستندات الأساسية:</h3>
+            <p class="welcome-text">
+                تقدر ترفع الملفات الآن أو لاحقًا نطلبها منك على الواتساب، لكن الأفضل ترفعها هنا عشان نجهز طلبك أسرع.
+            </p>
+
+            <div class="field-group">
+                <label for="passportFile">صورة الجواز (PDF أو صورة)</label>
+                <input type="file" id="passportFile" accept=".png,.jpg,.jpeg,.pdf">
+            </div>
+
+            <div class="field-group">
+                <label for="idFile">صورة بطاقة الهوية / الأحوال (PDF أو صورة)</label>
+                <input type="file" id="idFile" accept=".png,.jpg,.jpeg,.pdf">
+            </div>
+
+            <div class="field-group">
+                <label for="familyCardFile">صورة من بطاقة العائلة (إذا أكثر من شخص)</label>
+                <input type="file" id="familyCardFile" accept=".png,.jpg,.jpeg,.pdf">
+            </div>
+
+            <hr>
+
+            <p class="note-title">ملاحظات مهمة:</p>
+            <ul class="note-list">
+                <li>٤ صور شخصية حديثة لكل شخص.</li>
+                <li>تعريف راتب مصدّق من جهة العمل ووزارة التجارة.</li>
+                <li>كشف حساب بنكي لمدة ٣ أو ٦ شهور، وبمبلغ لا يقل عن ٣٠ ألف ريال.</li>
+                <li>تُحضِر جميع الأوراق معك للسفارة يوم الموعد.</li>
+            </ul>
+
+            <p class="note-title">خدمات نقدمها ضمن رسوم الفيزا:</p>
+            <ul class="note-list">
+                <li>حجز الموعد</li>
+                <li>حجز الفندق</li>
+                <li>حجز التذاكر</li>
+                <li>تأمين سفر</li>
+                <li>تعبئة نموذج الطلب</li>
+                <li>ترجمة بطاقة العائلة وبطاقة الأحوال</li>
+                <li>خطاب التكفّل</li>
+            </ul>
+
+            <button type="submit" class="primary-btn">إرسال طلب الفيزا</button>
+        </form>
+    </section>
+
+    <!-- طلب الرحلة (الباقة) -->
+    <section id="package" class="section">
+        <h2 class="section-title">طلب رحلة (تصميم باقة)</h2>
+        <form id="packageForm" class="main-form">
+            <div class="field-group">
+                <label for="destination">الوجهة</label>
+                <input type="text" id="destination" name="destination" placeholder="مثال: اسطنبول، باريس، دبي..." required>
+            </div>
+
+            <div class="field-group-inline">
+                <div>
+                    <label for="adults">عدد البالغين (+١٢)</label>
+                    <input type="number" id="adults" name="adults" min="1" value="1" required>
+                </div>
+                <div>
+                    <label for="children">عدد الأطفال (٢ - ١٢)</label>
+                    <input type="number" id="children" name="children" min="0" value="0">
+                </div>
+                <div>
+                    <label for="infants">عدد الرضع (٠ - ٢)</label>
+                    <input type="number" id="infants" name="infants" min="0" value="0">
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label for="departureAirport">مطار الإقلاع</label>
+                <input type="text" id="departureAirport" name="departureAirport" placeholder="مثال: جدة، الرياض..." required>
+            </div>
+
+            <div class="field-group">
+                <label for="budget">الميزانية التقريبية (بالريال)</label>
+                <input type="number" id="budget" name="budget" min="0" placeholder="مثال: 5000" required>
+            </div>
+
+            <div class="field-group">
+                <label for="specialRequests">طلبات خاصة</label>
+                <textarea id="specialRequests" name="specialRequests" rows="4" placeholder="مثال: فندق قريب من البحر، غرفة مطلة، رحلات معينة..."></textarea>
+            </div>
+
+            <button type="submit" class="primary-btn">إرسال طلب الباقة</button>
+        </form>
+    </section>
+
+    <!-- قسم التعريف بالدول السياحية -->
+    <section id="destinations" class="section">
+        <h2 class="section-title">الوجهات السياحية التي نخدمها</h2>
+        <p class="welcome-text">
+            نظرة سريعة على بعض الوجهات المفضلة لعملائنا وأهم المعالم السياحية فيها.
+        </p>
+
+        <div class="destinations-grid">
+            <!-- اسطنبول -->
+            <article class="destination-card">
+                <img src="images/istanbul.jpg" alt="اسطنبول" class="dest-img">
+                <h3>اسطنبول</h3>
+                <p>
+                    مدينة تجمع بين أوروبا وآسيا، مزيج من التاريخ العثماني والحياة العصرية والأسواق الشعبية.
+                </p>
+                <ul>
+                    <li>منطقة السلطان أحمد وآيا صوفيا</li>
+                    <li>البوسفور ورحلات البحر</li>
+                    <li>شارع الاستقلال وساحة تقسيم</li>
+                    <li>جراند بازار والأسواق التاريخية</li>
+                </ul>
+            </article>
+
+            <!-- طرابزون -->
+            <article class="destination-card">
+                <img src="images/trabzon.jpg" alt="طرابزون" class="dest-img">
+                <h3>طرابزون</h3>
+                <p>
+                    جنة الشمال التركي بطبيعتها الخضراء وجبالها وضبابها، مناسبة للعائلات ومحبي الهدوء.
+                </p>
+                <ul>
+                    <li>أوزنجول والبحيرة الشهيرة</li>
+                    <li>مرتفعات حيدر نبي</li>
+                    <li>آيا صوفيا طرابزون</li>
+                    <li>الأسواق المحلية والمطاعم المطلة على البحر الأسود</li>
+                </ul>
+            </article>
+
+            <!-- جورجيا -->
+            <article class="destination-card">
+                <img src="images/georgia.jpg" alt="جورجيا" class="dest-img">
+                <h3>جورجيا</h3>
+                <p>
+                    تجمع بين الجبال والأنهار والمدن الملونة، تناسب الشباب والعائلات ومحبي الطبيعة.
+                </p>
+                <ul>
+                    <li>تبليسي القديمة وجسر السلام</li>
+                    <li>باتومي على البحر الأسود</li>
+                    <li>جبال القوقاز في قودوري وكازبيجي</li>
+                    <li>منطقة كاخيتي وحقول العنب</li>
+                </ul>
+            </article>
+
+            <!-- روسيا -->
+            <article class="destination-card">
+                <img src="images/russia.jpg" alt="روسيا" class="dest-img">
+                <h3>روسيا</h3>
+                <p>
+                    عمق تاريخي ومعمار فاخر بين موسكو وسانت بطرسبيرغ، مع شتاء ثلجي وتجربة مختلفة تمامًا.
+                </p>
+                <ul>
+                    <li>الساحة الحمراء والكرملين</li>
+                    <li>متحف الإرميتاج في سانت بطرسبيرغ</li>
+                    <li>قصور القيصر والقنوات المائية</li>
+                    <li>الأسواق والمتاجر المحلية</li>
+                </ul>
+            </article>
+
+            <!-- البوسنة -->
+            <article class="destination-card">
+                <img src="images/bosnia.jpg" alt="البوسنة" class="dest-img">
+                <h3>البوسنة</h3>
+                <p>
+                    طبيعة خضراء وشلالات وأنهار، مناسبة للباحثين عن جو هادي وأسعار معقولة.
+                </p>
+                <ul>
+                    <li>سراييفو القديمة وباشجارشيا</li>
+                    <li>شلالات كرافيتسا</li>
+                    <li>موستار وجسرها الشهير</li>
+                    <li>منتزه نبع البوسنة</li>
+                </ul>
+            </article>
+
+            <!-- تايلند -->
+            <article class="destination-card">
+                <img src="images/thailand.jpg" alt="تايلند" class="dest-img">
+                <h3>تايلند</h3>
+                <p>
+                    جزر استوائية ومعابد وأسواق ليلية، تناسب شهر العسل ورحلات الأصدقاء.
+                </p>
+                <ul>
+                    <li>بانكوك والمعابد والأسواق</li>
+                    <li>بوكيت وجزر في في</li>
+                    <li>تشيانغ ماي والطبيعة والشلالات</li>
+                    <li>الأسواق العائمة والتجارب البحرية</li>
+                </ul>
+            </article>
+
+            <!-- اندونيسيا -->
+            <article class="destination-card">
+                <img src="images/indonesia.jpg" alt="إندونيسيا" class="dest-img">
+                <h3>إندونيسيا</h3>
+                <p>
+                    مزيج من الشواطئ والبراكين وحقول الأرز، أشهرها جزيرة بالي الرومانسية.
+                </p>
+                <ul>
+                    <li>بالي – شواطئ وفلل بمسابح خاصة</li>
+                    <li>جاكرتا وباندونغ للتسوق والمقاهي</li>
+                    <li>مزارع الأرز في أوبود</li>
+                    <li>الأنشطة البحرية والسنوركلينج</li>
+                </ul>
+            </article>
+
+            <!-- ماليزيا -->
+            <article class="destination-card">
+                <img src="images/malaysia.jpg" alt="ماليزيا" class="dest-img">
+                <h3>ماليزيا</h3>
+                <p>
+                    وجهة مناسبة للعوائل، فيها مدن حديثة وجزر طبيعية وأسعار متوسطة.
+                </p>
+                <ul>
+                    <li>كوالالمبور وبرجا بتروناس</li>
+                    <li>لنكاوي وجزرها ورحلات الكيبل كار</li>
+                    <li>بينانغ والستريت فود</li>
+                    <li>مرتفعات جنتنغ وكاميرون هايلاند</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const SUPABASE_URL = "https://hiieronrmhasbwiruvhj.supabase.co"; // من Settings → API
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpaWVyb25ybWhhc2J3aXJ1dmhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU3MTc0NjAsImV4cCI6MjA4MTI5MzQ2MH0.MncMObTpIMRoc15HUz6rElukAYKqjJXMCRfj3Hojb-U"; // anon public key فقط
+
+  window.sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  window.SB_BUCKET = "planetstravel";
+</script>
+
+<script src="app.js"></script>
+
+
+
+
+</body>
+</html>
