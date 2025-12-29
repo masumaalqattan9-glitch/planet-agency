@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>وكالة الكواكب للسياحة والسفر</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="logo-wrap">
+      <img src="planetslogo.png" alt="Planet Agency Logo" class="logo-img">
+      <div>
+        <h1>وكالة الكواكب للسياحة والسفر</h1>
+        <p>خليك مستعد تقلع معنا إلى أي كوكب تحلم فيه 🌍✈️</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-menu">
+    <button class="menu-btn" data-section="home">الرئيسية</button>
+    <button class="menu-btn" data-section="offers">أحدث العروض</button>
+    <button class="menu-btn" data-section="visa">حجز موعد الفيزا</button>
+    <button class="menu-btn" data-section="package">طلب رحلة (باقة)</button>
+    <button class="menu-btn" data-section="destinations">الدول السياحية</button>
+  </nav>
+
+  <!-- الصفحة الرئيسية -->
+  <section id="home" class="section active">
+    <h2 class="section-title">أهلاً بك مع وكالة الكواكب للسياحة والسفر</h2>
+    <p class="welcome-text">اختارأحد الخيارات التالية وابدأ تخطيط رحلتك:</p>
+
+    <div class="home-options">
+      <div class="option-card" data-section="offers">
+        <h3>1- تصفح أحدث العروض</h3>
+        <p>اكتشف وجهات مميزة جاهزة بالسعر والخدمات.</p>
+      </div>
+
+      <div class="option-card" data-section="visa">
+        <h3>2- احجز موعد لفيزتك واتركي الباقي علينا</h3>
+        <p>نعبي لك النماذج ونجمع الأوراق ونرتب لك الموعد.</p>
+      </div>
+
+      <div class="option-card" data-section="package">
+        <h3>3- أرسل طلب رحلتك (بكج رحلة خاصة)</h3>
+        <p>صمم رحلتك حسب مزاجك وميزانيتك وعدد أفراد عائلتك.</p>
+      </div>
+
+      <div class="option-card" data-section="destinations">
+        <h3>4- تعرّف على أهم الدول السياحية</h3>
+        <p>نبذة سريعة عن الوجهات اللي نخدمها وأشهر معالمها.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- أحدث العروض -->
+<section id="offers" class="section">
+  <h2 class="section-title">أحدث العروض</h2>
+
+  <div class="offer-card">
+    <img src="images/istanbuloffer.jpg" alt="عرض اسطنبول" class="offer-img">
+
+    <div class="offer-content">
+      <h3>اسطنبول - تركيا</h3>
+
+      <ul>
+        <li>٧ ليالي</li>
+        <li>فندق ٤ نجوم</li>
+        <li>جولات سياحية يومية</li>
+        <li>شرائح إنترنت</li>
+        <li>٣٥٠٠ ريال للشخصين</li>
+      </ul>
+
+      <a
+        href="https://wa.me/966564676885 عرض اسطنبول - تركيا (٧ ليالي، فندق ٤ نجوم)"
+        target="_blank"
+        class="primary-btn"
+      >
+        اطلب هذا العرض
+      </a>
+    </div>
+  </div>
+</section>
+
+  <!-- =========================
+       قسم الفيزا (شنغن + روسي)
+       ========================= -->
+  <section id="visa" class="section">
+    <h2 class="section-title">احجز موعد لفيزتك واترك الباقي علينا</h2>
+
+    <p class="welcome-text">
+      عبّي هذي البيانات، وراح نتواصل معك على جوالك ونرسل لك أقرب مواعيد متاحة للسفارة حسب منطقتك 🌍.
+    </p>
+
+    <form id="visaForm" class="main-form">
+      <div class="field-group">
+        <label for="visaType">نوع الفيزا</label>
+        <select id="visaType" name="visaType" required>
+          <option value="">اختر نوع الفيزا</option>
+          <option value="schengen">فيزا شنغن</option>
+          <option value="russian">فيزا روسية</option>
+        </select>
+      </div>
+
+      <!-- مشترك -->
+      <div class="field-group">
+        <label for="customerPhone">رقم الجوال للتواصل (واتساب)</label>
+        <input type="text" id="customerPhone" name="customerPhone" placeholder="مثال: 05xxxxxxxx" required>
+      </div>
+
+      <!-- ✅ للشنغن فقط -->
+      <div id="regionWrap" class="field-group">
+        <label for="customerRegion">المدينة / المنطقة</label>
+        <input type="text" id="customerRegion" name="customerRegion" placeholder="مثال: جدة، الرياض، الشرقية...">
+      </div>
+
+      <!-- ✅ للشنغن فقط -->
+      <div id="numPersonsWrap" class="field-group">
+        <label for="numPersons">عدد الأشخاص</label>
+        <input type="number" id="numPersons" name="numPersons" min="1" value="1">
+      </div>
+
+      <!-- مشترك -->
+      <div class="field-group">
+        <label for="travelDate">تاريخ السفر</label>
+        <input type="date" id="travelDate" name="travelDate" required>
+      </div>
+
+      <!-- ✅ للشنغن فقط -->
+      <div id="personsContainer"></div>
+
+      <hr>
+
+      <!-- ✅ قسم الملفات -->
+      <div id="visaRequirements" style="display:none;">
+        <h3 class="note-title">رفع المستندات الأساسية:</h3>
+        <p class="welcome-text">
+          تقدر ترفع الملفات الآن أو لاحقًا نطلبها منك على الواتساب، لكن الأفضل ترفعها هنا عشان نجهز طلبك أسرع.
+        </p>
+
+        <!-- مشترك: الجواز -->
+        <div class="field-group">
+          <label for="passportFile">صورة الجواز (PDF أو صورة)</label>
+          <input type="file" id="passportFile" accept=".png,.jpg,.jpeg,.pdf">
+        </div>
+
+        <!-- ✅ متطلبات شنغن (مثل ما هي) -->
+        <div id="schengenRequirements" style="display:none;">
+          <div class="field-group">
+            <label for="idFile">صورة بطاقة الهوية / الأحوال (PDF أو صورة)</label>
+            <input type="file" id="idFile" accept=".png,.jpg,.jpeg,.pdf">
+          </div>
+
+          <div class="field-group">
+            <label for="familyCardFile">صورة من بطاقة العائلة (إذا أكثر من شخص)</label>
+            <input type="file" id="familyCardFile" accept=".png,.jpg,.jpeg,.pdf">
+          </div>
+
+          <div class="field-group">
+            <label for="oldSchengenFile">صورة فيزا شنغن القديمة (إن وجدت)</label>
+            <input type="file" id="oldSchengenFile" accept=".png,.jpg,.jpeg,.pdf">
+          </div>
+        </div>
+
+        <!-- ✅ متطلبات روسية (صورة شخصية فقط) -->
+        <div id="russianRequirements" style="display:none;">
+          <div class="field-group">
+            <label for="personalPhotoFile">صورة شخصية (صورة فقط)</label>
+            <input type="file" id="personalPhotoFile" accept=".png,.jpg,.jpeg">
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- ✅ ملاحظات وخدمات: للشنغن فقط -->
+        <div id="schengenNotes" style="display:none;">
+          <p class="note-title">ملاحظات مهمة:</p>
+          <ul class="note-list">
+            <li>٤ صور شخصية حديثة لكل شخص.</li>
+            <li>تعريف راتب مصدّق من جهة العمل ووزارة التجارة.</li>
+            <li>كشف حساب بنكي لمدة ٣ أو ٦ شهور، وبمبلغ لا يقل عن ٣٠ ألف ريال.</li>
+            <li>تُحضِر جميع الأوراق معك للسفارة يوم الموعد.</li>
+          </ul>
+
+          <p class="note-title">خدمات نقدمها ضمن رسوم الفيزا:</p>
+          <ul class="note-list">
+            <li>حجز الموعد</li>
+            <li>حجز الفندق</li>
+            <li>حجز التذاكر</li>
+            <li>تأمين سفر</li>
+            <li>تعبئة نموذج الطلب</li>
+            <li>ترجمة بطاقة العائلة وبطاقة الأحوال</li>
+            <li>خطاب التكفّل</li>
+          </ul>
+        </div>
+      </div>
+
+      <button type="submit" class="primary-btn">إرسال طلب الفيزا</button>
+    </form>
+  </section>
+
+  <!-- =========================
+       طلب الرحلة (الباقة)
+       ========================= -->
+  <section id="package" class="section">
+    <h2 class="section-title">طلب رحلة (تصميم باقة)</h2>
+
+    <form id="packageForm" class="main-form">
+      <div class="field-group">
+        <label for="destination">الوجهة</label>
+        <input type="text" id="destination" name="destination" placeholder="مثال: اسطنبول، باريس، دبي..." required>
+      </div>
+
+      <div class="field-group-inline">
+        <div>
+          <label for="adults">عدد البالغين (+١٢)</label>
+          <input type="number" id="adults" name="adults" min="1" value="1" required>
+        </div>
+        <div>
+          <label for="children">عدد الأطفال (٢ - ١٢)</label>
+          <input type="number" id="children" name="children" min="0" value="0">
+        </div>
+        <div>
+          <label for="infants">عدد الرضع (٠ - ٢)</label>
+          <input type="number" id="infants" name="infants" min="0" value="0">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="departureAirport">مطار الإقلاع</label>
+        <input type="text" id="departureAirport" name="departureAirport" placeholder="مثال: جدة، الرياض..." required>
+      </div>
+
+      <div class="field-group">
+        <label for="packagePhone">رقم الجوال للتواصل (واتساب)</label>
+        <input type="text" id="packagePhone" name="packagePhone" placeholder="مثال: 05xxxxxxxx" required>
+      </div>
+
+      <div class="field-group-inline">
+        <div>
+          <label for="packageStartDate">تاريخ السفر</label>
+          <input type="date" id="packageStartDate" name="packageStartDate" required>
+        </div>
+        <div>
+          <label for="packageEndDate">تاريخ العودة</label>
+          <input type="date" id="packageEndDate" name="packageEndDate" required>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="budget">الميزانية التقريبية (بالريال)</label>
+        <input type="number" id="budget" name="budget" min="0" placeholder="مثال: 5000" required>
+      </div>
+
+      <div class="field-group">
+        <label for="specialRequests">طلبات خاصة</label>
+        <textarea id="specialRequests" name="specialRequests" rows="4"
+          placeholder="مثال: فندق قريب من البحر، غرفة مطلة، رحلات معينة..."></textarea>
+      </div>
+
+      <button type="submit" class="primary-btn">إرسال طلب الباقة</button>
+    </form>
+  </section>
+
+      <section id="destinations" class="section">
+  <h2 class="section-title">الوجهات السياحية التي نخدمها</h2>
+  <p class="welcome-text">
+    نظرة سريعة على بعض الوجهات المفضلة لعملائنا وأهم المعالم السياحية فيها.
+  </p>
+
+  <!-- ================== شهر عسل ================== -->
+  <h3 class="section-title" style="font-size:1.1rem; margin-top:18px;">💍 وجهات شهر العسل</h3>
+  <div class="destinations-grid">
+    
+    <!-- فرنسا -->
+    <article class="destination-card">
+      <img src="images/france.jpg" alt="فرنسا" class="dest-img">
+      <h3>فرنسا</h3>
+      <p>وجهة رومانسية وثقافية، تجمع بين التاريخ والفن والتسوق الفاخر.</p>
+      <ul>
+        <li>باريس وبرج إيفل</li>
+        <li>ديزني لاند باريس</li>
+        <li>الشانزليزيه والمتاحف</li>
+        <li>الريف الفرنسي والقصور</li>
+      </ul>
+    </article>
+
+    <!-- إيطاليا -->
+    <article class="destination-card">
+      <img src="images/italy.jpg" alt="إيطاليا" class="dest-img">
+      <h3>إيطاليا</h3>
+      <p>مزيج ساحر من التاريخ والطعام الشهي والطبيعة الخلابة.</p>
+      <ul>
+        <li>روما والمعالم التاريخية</li>
+        <li>ميلانو والتسوق</li>
+        <li>فينيسيا والقنوات المائية</li>
+        <li>فلورنسا والفن</li>
+      </ul>
+    </article>
+
+    <!-- سويسرا -->
+    <article class="destination-card">
+      <img src="images/switzerland.jpg" alt="سويسرا" class="dest-img">
+      <h3>سويسرا</h3>
+      <p>جنة الطبيعة لمحبي الجبال والبحيرات والهدوء.</p>
+      <ul>
+        <li>إنترلاكن والأنشطة الجبلية</li>
+        <li>لوسيرن والبحيرات</li>
+        <li>زيورخ وجنيف</li>
+        <li>قطارات بانورامية</li>
+      </ul>
+    </article>
+
+    <!-- النمسا -->
+    <article class="destination-card">
+      <img src="images/austria.jpg" alt="النمسا" class="dest-img">
+      <h3>النمسا</h3>
+      <p>طبيعة أوروبية ساحرة ومدن تاريخية أنيقة.</p>
+      <ul>
+        <li>فيينا والقصور</li>
+        <li>سالزبورغ</li>
+        <li>زحلات الألب</li>
+        <li>بحيرات هالشتات</li>
+      </ul>
+    </article>
+
+    <!-- إندونيسيا -->
+    <article class="destination-card">
+      <img src="images/indonesia.jpg" alt="إندونيسيا" class="dest-img">
+      <h3>إندونيسيا</h3>
+      <p>مزيج من الشواطئ والبراكين وحقول الأرز، أشهرها جزيرة بالي الرومانسية.</p>
+      <ul>
+        <li>بالي – شواطئ وفلل بمسابح خاصة</li>
+        <li>جاكرتا وباندونغ للتسوق والمقاهي</li>
+        <li>مزارع الأرز في أوبود</li>
+        <li>الأنشطة البحرية والسنوركلينج</li>
+      </ul>
+    </article>
+
+    <!-- تايلند -->
+    <article class="destination-card">
+      <img src="images/thailand.jpg" alt="تايلند" class="dest-img">
+      <h3>تايلند</h3>
+      <p>جزر استوائية ومعابد وأسواق ليلية، تناسب شهر العسل ورحلات الأصدقاء.</p>
+      <ul>
+        <li>بانكوك والمعابد والأسواق</li>
+        <li>بوكيت وجزر في في</li>
+        <li>تشيانغ ماي والطبيعة والشلالات</li>
+        <li>الأسواق العائمة والتجارب البحرية</li>
+      </ul>
+    </article>
+	
+	<article class="destination-card">
+  <img src="images/maldives.jpg" alt="المالديف" class="dest-img">
+  <h3>المالديف</h3>
+  <p>وجهة فاخرة لشهر العسل والخصوصية والاسترخاء.</p>
+  <ul>
+    <li>فلل فوق الماء</li>
+    <li>شواطئ بيضاء ومياه صافية</li>
+    <li>أنشطة بحرية وغوص</li>
+    <li>منتجعات خمس نجوم</li>
+  </ul>
+</article>
+
+
+<article class="destination-card">
+  <img src="images/mauritius.jpg" alt="موريشيوس" class="dest-img">
+  <h3>موريشيوس</h3>
+  <p>وجهة مثالية لشهر العسل تجمع بين الفخامة والطبيعة.</p>
+  <ul>
+    <li>شواطئ ومياه فيروزية</li>
+    <li>منتجعات راقية</li>
+    <li>أنشطة بحرية</li>
+    <li>طبيعة خضراء</li>
+  </ul>
+</article>
+
+<article class="destination-card">
+  <img src="images/poland.jpg" alt="بولندا" class="dest-img">
+  <h3>بولندا</h3>
+  <p>مدن أوروبية أنيقة تجمع بين الرومانسية والتاريخ.</p>
+  <ul>
+    <li>كراكوف القديمة</li>
+    <li>وارسو الحديثة</li>
+    <li>المدن التاريخية</li>
+    <li>المقاهي والساحات</li>
+  </ul>
+</article>
+
+
+
+<article class="destination-card">
+  <img src="images/vietnam.jpg" alt="فيتنام" class="dest-img">
+  <h3>فيتنام</h3>
+  <p>وجهة متنوعة بين الطبيعة والمدن وتجارب شهر العسل.</p>
+  <ul>
+    <li>خليج ها لونغ</li>
+    <li>دا نانغ وهوي آن</li>
+    <li>الشواطئ</li>
+    <li>الثقافة المحلية</li>
+  </ul>
+</article>
+
+
+  </div>
+
+  <!-- ================== عوائل ================== -->
+  <h3 class="section-title" style="font-size:1.1rem; margin-top:22px;">👨‍👩‍👧‍👦 وجهات العوائل</h3>
+  <div class="destinations-grid">
+
+    <!-- اسطنبول -->
+    <article class="destination-card">
+      <img src="images/istanbul.jpg" alt="اسطنبول" class="dest-img">
+      <h3>اسطنبول</h3>
+      <p>مدينة تجمع بين أوروبا وآسيا، مزيج من التاريخ العثماني والحياة العصرية والأسواق الشعبية.</p>
+      <ul>
+        <li>منطقة السلطان أحمد وآيا صوفيا</li>
+        <li>البوسفور ورحلات البحر</li>
+        <li>شارع الاستقلال وساحة تقسيم</li>
+        <li>جراند بازار والأسواق التاريخية</li>
+      </ul>
+    </article>
+
+    <!-- طرابزون -->
+    <article class="destination-card">
+      <img src="images/trabzon.jpg" alt="طرابزون" class="dest-img">
+      <h3>طرابزون</h3>
+      <p>جنة الشمال التركي بطبيعتها الخضراء وجبالها وضبابها، مناسبة للعائلات ومحبي الهدوء.</p>
+      <ul>
+        <li>أوزنجول والبحيرة الشهيرة</li>
+        <li>مرتفعات حيدر نبي</li>
+        <li>آيا صوفيا طرابزون</li>
+        <li>الأسواق المحلية والمطاعم المطلة على البحر الأسود</li>
+      </ul>
+    </article>
+
+    <!-- ماليزيا -->
+    <article class="destination-card">
+      <img src="images/malaysia.jpg" alt="ماليزيا" class="dest-img">
+      <h3>ماليزيا</h3>
+      <p>وجهة مناسبة للعوائل، فيها مدن حديثة وجزر طبيعية وأسعار متوسطة.</p>
+      <ul>
+        <li>كوالالمبور وبرجا بتروناس</li>
+        <li>لنكاوي وجزرها ورحلات الكيبل كار</li>
+        <li>بينانغ والستريت فود</li>
+        <li>مرتفعات جنتنغ وكاميرون هايلاند</li>
+      </ul>
+    </article>
+
+    <!-- جورجيا -->
+    <article class="destination-card">
+      <img src="images/georgia.jpg" alt="جورجيا" class="dest-img">
+      <h3>جورجيا</h3>
+      <p>تجمع بين الجبال والأنهار والمدن الملونة، تناسب الشباب والعائلات ومحبي الطبيعة.</p>
+      <ul>
+        <li>تبليسي القديمة وجسر السلام</li>
+        <li>باتومي على البحر الأسود</li>
+        <li>جبال القوقاز في قودوري وكازبيجي</li>
+        <li>منطقة كاخيتي وحقول العنب</li>
+      </ul>
+    </article>
+
+    <!-- أذربيجان -->
+    <article class="destination-card">
+      <img src="images/azerbaijan.jpg" alt="أذربيجان" class="dest-img">
+      <h3>أذربيجان</h3>
+      <p>وجهة تجمع بين الطبيعة الخضراء والمدن الحديثة وأسعار مناسبة.</p>
+      <ul>
+        <li>باكو والكورنيش</li>
+        <li>قابالا والطبيعة</li>
+        <li>شلالات قابالا</li>
+        <li>قوسار ومنتجع شاهداغ</li>
+      </ul>
+    </article>
+
+    <!-- البوسنة -->
+    <article class="destination-card">
+      <img src="images/bosnia.jpg" alt="البوسنة" class="dest-img">
+      <h3>البوسنة</h3>
+      <p>طبيعة خضراء وشلالات وأنهار، مناسبة للباحثين عن جو هادي وأسعار معقولة.</p>
+      <ul>
+        <li>سراييفو القديمة وباشجارشيا</li>
+        <li>شلالات كرافيتسا</li>
+        <li>موستار وجسرها الشهير</li>
+        <li>منتزه نبع البوسنة</li>
+      </ul>
+    </article>
+
+    <!-- مصر -->
+    <article class="destination-card">
+      <img src="images/egypt.jpg" alt="مصر" class="dest-img">
+      <h3>مصر</h3>
+      <p>حضارة عريقة وتجارب سياحية متنوعة بين التاريخ والاستجمام.</p>
+      <ul>
+        <li>الأهرامات والمتحف المصري</li>
+        <li>القاهرة التاريخية</li>
+        <li>شرم الشيخ والغوص</li>
+        <li>الأقصر وأسوان</li>
+      </ul>
+    </article>
+	
+	<article class="destination-card">
+  <img src="images/dubai.jpg" alt="دبي" class="dest-img">
+  <h3>دبي</h3>
+  <p>مدينة ترفيه وتسوق تناسب العوائل على مدار السنة.</p>
+  <ul>
+    <li>دبي مول وبرج خليفة</li>
+    <li>الحدائق المائية</li>
+    <li>المنتزهات الترفيهية</li>
+    <li>شواطئ ومطاعم متنوعة</li>
+  </ul>
+</article>
+
+<article class="destination-card">
+  <img src="images/barcelona.jpg" alt="برشلونة" class="dest-img">
+  <h3>برشلونة</h3>
+  <p>مدينة شاطئية تناسب العائلات والتسوق.</p>
+  <ul>
+    <li>الشواطئ</li>
+    <li>المعالم المعمارية</li>
+    <li>الأسواق والمطاعم</li>
+    <li>الأنشطة العائلية</li>
+  </ul>
+</article>
+
+<article class="destination-card">
+  <img src="images/london.jpg" alt="لندن" class="dest-img">
+  <h3>لندن</h3>
+  <p>مدينة عالمية تناسب العوائل والتسوق والمعالم الثقافية.</p>
+  <ul>
+    <li>المتاحف المجانية</li>
+    <li>الحدائق العامة</li>
+    <li>أكسفورد ستريت</li>
+    <li>الأسواق الشعبية</li>
+  </ul>
+</article>
+
+
+
+<article class="destination-card">
+  <img src="images/singapore.jpg" alt="سنغافورة" class="dest-img">
+  <h3>سنغافورة</h3>
+  <p>مدينة نظيفة وحديثة مثالية للعوائل.</p>
+  <ul>
+    <li>يونيفرسال ستوديوز</li>
+    <li>حديقة الحيوانات</li>
+    <li>المعالم الحديثة</li>
+    <li>تجربة تسوق مميزة</li>
+  </ul>
+</article>
+
+
+  </div>
+
+  <!-- ================== طبيعة ================== -->
+  <h3 class="section-title" style="font-size:1.1rem; margin-top:22px;">🌿 وجهات الطبيعة</h3>
+  <div class="destinations-grid">
+
+    <!-- طرابزون -->
+    <article class="destination-card">
+      <img src="images/trabzon.jpg" alt="طرابزون" class="dest-img">
+      <h3>طرابزون</h3>
+      <p>جنة الشمال التركي بطبيعتها الخضراء وجبالها وضبابها، مناسبة للعائلات ومحبي الهدوء.</p>
+      <ul>
+        <li>أوزنجول والبحيرة الشهيرة</li>
+        <li>مرتفعات حيدر نبي</li>
+        <li>آيا صوفيا طرابزون</li>
+        <li>الأسواق المحلية والمطاعم المطلة على البحر الأسود</li>
+      </ul>
+    </article>
+
+    <!-- جورجيا -->
+    <article class="destination-card">
+      <img src="images/georgia.jpg" alt="جورجيا" class="dest-img">
+      <h3>جورجيا</h3>
+      <p>تجمع بين الجبال والأنهار والمدن الملونة، تناسب الشباب والعائلات ومحبي الطبيعة.</p>
+      <ul>
+        <li>تبليسي القديمة وجسر السلام</li>
+        <li>باتومي على البحر الأسود</li>
+        <li>جبال القوقاز في قودوري وكازبيجي</li>
+        <li>منطقة كاخيتي وحقول العنب</li>
+      </ul>
+    </article>
+
+    <!-- أذربيجان -->
+    <article class="destination-card">
+      <img src="images/azerbaijan.jpg" alt="أذربيجان" class="dest-img">
+      <h3>أذربيجان</h3>
+      <p>وجهة تجمع بين الطبيعة الخضراء والمدن الحديثة وأسعار مناسبة.</p>
+      <ul>
+        <li>باكو والكورنيش</li>
+        <li>قابالا والطبيعة</li>
+        <li>شلالات قابالا</li>
+        <li>قوسار ومنتجع شاهداغ</li>
+      </ul>
+    </article>
+
+    <!-- البوسنة -->
+    <article class="destination-card">
+      <img src="images/bosnia.jpg" alt="البوسنة" class="dest-img">
+      <h3>البوسنة</h3>
+      <p>طبيعة خضراء وشلالات وأنهار، مناسبة للباحثين عن جو هادي وأسعار معقولة.</p>
+      <ul>
+        <li>سراييفو القديمة وباشجارشيا</li>
+        <li>شلالات كرافيتسا</li>
+        <li>موستار وجسرها الشهير</li>
+        <li>منتزه نبع البوسنة</li>
+      </ul>
+    </article>
+
+    <!-- سويسرا -->
+    <article class="destination-card">
+      <img src="images/switzerland.jpg" alt="سويسرا" class="dest-img">
+      <h3>سويسرا</h3>
+      <p>جنة الطبيعة لمحبي الجبال والبحيرات والهدوء.</p>
+      <ul>
+        <li>إنترلاكن والأنشطة الجبلية</li>
+        <li>لوسيرن والبحيرات</li>
+        <li>زيورخ وجنيف</li>
+        <li>قطارات بانورامية</li>
+      </ul>
+    </article>
+
+    <!-- النمسا -->
+    <article class="destination-card">
+      <img src="images/austria.jpg" alt="النمسا" class="dest-img">
+      <h3>النمسا</h3>
+      <p>طبيعة أوروبية ساحرة ومدن تاريخية أنيقة.</p>
+      <ul>
+        <li>فيينا والقصور</li>
+        <li>سالزبورغ</li>
+        <li>زحلات الألب</li>
+        <li>بحيرات هالشتات</li>
+      </ul>
+    </article>
+
+    <!-- جنوب أفريقيا -->
+    <article class="destination-card">
+      <img src="images/south-africa.jpg" alt="جنوب أفريقيا" class="dest-img">
+      <h3>جنوب أفريقيا</h3>
+      <p>مغامرات طبيعية وتجارب سفاري فريدة.</p>
+      <ul>
+        <li>كيب تاون</li>
+        <li>جبل الطاولة</li>
+        <li>السفاري والمحميات</li>
+        <li>الشواطئ والمناظر الطبيعية</li>
+      </ul>
+    </article>
+
+
+<article class="destination-card">
+  <img src="images/kazakhstan.jpg" alt="كازاخستان" class="dest-img">
+  <h3>كازاخستان</h3>
+  <p>وجهة طبيعية جديدة لمحبي الجبال والبحيرات.</p>
+  <ul>
+    <li>بحيرة كولساي</li>
+    <li>جبال ألماتي</li>
+    <li>مناظر طبيعية خلابة</li>
+    <li>طقس معتدل صيفاً</li>
+  </ul>
+</article>
+
+
+<article class="destination-card">
+  <img src="images/kyrgyzstan.jpg" alt="قيرغستان" class="dest-img">
+  <h3>قيرغستان</h3>
+  <p>وجهة طبيعية بجبالها وبحيراتها الخلابة لمحبي الهدوء والمغامرة.</p>
+  <ul>
+    <li>بحيرة إيسيك كول</li>
+    <li>الجبال الخضراء</li>
+    <li>المخيمات الريفية</li>
+    <li>الطبيعة البكر</li>
+  </ul>
+</article>
+
+<article class="destination-card">
+  <img src="images/uzbekistan.jpg" alt="أوزبكستان" class="dest-img">
+  <h3>أوزبكستان</h3>
+  <p>مزيج من التاريخ والطبيعة ومدن طريق الحرير.</p>
+  <ul>
+    <li>سمرقند التاريخية</li>
+    <li>بخارى وخيوة</li>
+    <li>العمارة الإسلامية</li>
+    <li>أسواق تقليدية</li>
+  </ul>
+</article>
+
+
+<article class="destination-card">
+  <img src="images/sri-lanka.jpg" alt="سريلانكا" class="dest-img">
+  <h3>سريلانكا</h3>
+  <p>طبيعة استوائية تجمع بين الشلالات والمزارع والشواطئ.</p>
+  <ul>
+    <li>مزارع الشاي</li>
+    <li>الشلالات والغابات</li>
+    <li>الشواطئ الجنوبية</li>
+    <li>رحلات السفاري</li>
+  </ul>
+</article>
+
+
+
+
+<article class="destination-card">
+  <img src="images/albania.jpg" alt="ألبانيا" class="dest-img">
+  <h3>ألبانيا</h3>
+  <p>طبيعة أوروبية وأسعار مناسبة وتجربة مختلفة.</p>
+  <ul>
+    <li>الشواطئ الألبانية</li>
+    <li>الجبال والأنهار</li>
+    <li>مدن تاريخية</li>
+    <li>أجواء هادئة</li>
+  </ul>
+</article>
+
+
+  </div>
+
+</section>
+
+
+<!-- Supabase -->
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const SUPABASE_URL = "https://hiieronrmhasbwiruvhj.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpaWVyb25ybWhhc2J3aXJ1dmhqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU3MTc0NjAsImV4cCI6MjA4MTI5MzQ2MH0.MncMObTpIMRoc15HUz6rElukAYKqjJXMCRfj3Hojb-U"; // يبدأ بـ eyJ...
+
+  // نخليهم متاحين لـ app.js
+  window.SUPABASE_URL = SUPABASE_URL;
+  window.SUPABASE_ANON_KEY = SUPABASE_ANON_KEY;
+
+  window.sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  window.SB_BUCKET = "planetstravel";
+</script>
+
+<script src="app.js"></script>
