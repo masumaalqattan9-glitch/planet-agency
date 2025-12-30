@@ -53,34 +53,706 @@
     </div>
   </section>
 
- <!-- أحدث العروض -->
-<section id="offers" class="section">
+<!-- =======================
+     OFFERS SECTION (FULL)
+     - Collapsible "عرض التفاصيل" button لكل عرض لتخفيف الزحمة
+     - رسالة واتساب تلقائياً تشمل تفاصيل العرض
+     - إضافة عروض جورجيا (5/7/8/10 أيام) + ملاحظة "جميع العروض تشمل"
+     - تحديث أذربيجان مع توزيع الليالي حسب "المنطقة" فقط بدون أسماء فنادق
+======================= -->
+
+<style>
+  /* ====== OFFERS (Clean + RTL) ====== */
+  #offers.section { padding: 40px 0; }
+  .section-title{
+    text-align:center;
+    font-size:28px;
+    margin:0 0 22px;
+    letter-spacing: .2px;
+  }
+
+  .offers-area{
+    margin: 26px auto;
+    width: min(1100px, 92%);
+  }
+
+  .area-title{
+    font-size:22px;
+    margin:0 0 14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .offers-grid{
+    display:grid;
+    grid-template-columns: repeat( auto-fit, minmax(260px, 1fr) );
+    gap:16px;
+  }
+
+  .offer-card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    border:1px solid rgba(0,0,0,0.06);
+    display:flex;
+    flex-direction:column;
+  }
+
+  .offer-img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    display:block;
+  }
+
+  .offer-content{
+    padding:14px 14px 16px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .offer-content h4{
+    margin:0;
+    font-size:18px;
+    line-height:1.4;
+  }
+
+  .price-line{
+    font-weight:700;
+    font-size:16px;
+    margin: 2px 0 0;
+  }
+
+  /* Buttons */
+  .btn-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top: 6px;
+  }
+
+  .primary-btn, .secondary-btn{
+    border:none;
+    cursor:pointer;
+    border-radius:12px;
+    padding:10px 12px;
+    font-weight:700;
+    font-size:14px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition: transform .08s ease, opacity .15s ease;
+  }
+  .primary-btn{ background:#0b4f6c; color:#fff; }
+  .secondary-btn{ background:#f3f4f6; color:#111827; border:1px solid rgba(0,0,0,0.08); }
+
+  .primary-btn:active, .secondary-btn:active{ transform: scale(.98); }
+  .primary-btn:hover, .secondary-btn:hover{ opacity:.92; }
+
+  /* Collapsible details */
+  .details{
+    background:#fafafa;
+    border:1px solid rgba(0,0,0,0.06);
+    border-radius:14px;
+    padding:12px 12px;
+    margin-top:6px;
+    display:none;
+  }
+  .details.open{ display:block; }
+
+  .details ul{
+    margin:0;
+    padding:0 18px 0 0;
+    list-style: disc;
+    line-height:1.85;
+    font-size:14px;
+  }
+
+  .includes{
+    background: #f7fbff;
+    border:1px dashed rgba(11,79,108,.35);
+    border-radius:16px;
+    padding:12px 14px;
+    margin: 10px 0 18px;
+    line-height:1.9;
+    font-size:14px;
+  }
+  .includes-title{
+    margin:0 0 6px;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .mini-note{
+    font-size:13px;
+    opacity:.85;
+    margin: 4px 0 0;
+  }
+
+  /* Small screens */
+  @media (max-width:480px){
+    .offer-img{ height:160px; }
+    .section-title{ font-size:24px; }
+  }
+</style>
+
+<section id="offers" class="section" dir="rtl">
   <h2 class="section-title">أحدث العروض</h2>
 
-  <div class="offer-card">
-    <img src="images/istanbuloffer.jpg" alt="عرض اسطنبول" class="offer-img">
+  <!-- ====== اسطنبول ====== -->
+  <div class="offers-area">
+    <h3 class="area-title">🇹🇷 عروض اسطنبول</h3>
 
-    <div class="offer-content">
-      <h3>اسطنبول - تركيا</h3>
+    <div class="offers-grid">
 
-      <ul>
-        <li>٧ ليالي</li>
-        <li>فندق ٤ نجوم</li>
-        <li>جولات سياحية يومية</li>
-        <li>شرائح إنترنت</li>
-        <li>٣٥٠٠ ريال للشخصين</li>
-      </ul>
+      <!-- اسطنبول 10 -->
+      <div class="offer-card"
+        data-destination="اسطنبول"
+        data-duration="10 أيام / 9 ليالي"
+        data-price="4700"
+        data-details="فنادق 4 نجوم شامل الفطور|استقبال وتوديع|جولة صبنجة|جولة بورصة|جولة جزيرة الأميرات|جولة بوسفور|جولة اسطنبول|جولة شيلا + يلوا">
+        <img src="images/istanbuloffer1.jpg" alt="اسطنبول 10 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>اسطنبول — 10 أيام / 9 ليالي</h4>
+          <div class="price-line">4700 ريال للشخصين</div>
 
-      <a
-        href="https://wa.me/966564676885?text=%D8%AD%D8%A7%D8%A8/%D8%A9%20%D8%A7%D8%B7%D9%84%D8%A8"
-        target="_blank"
-        class="primary-btn"
-      >
-        💬 اطلب هذا العرض
-      </a>
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- اسطنبول 8 -->
+      <div class="offer-card"
+        data-destination="اسطنبول"
+        data-duration="8 أيام / 7 ليالي"
+        data-price="3950"
+        data-details="فنادق 4 نجوم شامل الفطور|استقبال وتوديع|جولة صبنجة|جولة بورصة|جولة جزيرة الأميرات|جولة بوسفور|جولة اسطنبول">
+        <img src="images/istanbul-8.jpg" alt="اسطنبول 8 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>اسطنبول — 8 أيام / 7 ليالي</h4>
+          <div class="price-line">3950 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- اسطنبول 7 -->
+      <div class="offer-card"
+        data-destination="اسطنبول"
+        data-duration="7 أيام / 6 ليالي"
+        data-price="3550"
+        data-details="فنادق 4 نجوم شامل الفطور|استقبال وتوديع|جولة صبنجة|جولة بورصة|جولة جزيرة الأميرات|جولة بوسفور">
+        <img src="images/istanbul-7.jpg" alt="اسطنبول 7 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>اسطنبول — 7 أيام / 6 ليالي</h4>
+          <div class="price-line">3550 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- اسطنبول 5 -->
+      <div class="offer-card"
+        data-destination="اسطنبول"
+        data-duration="5 أيام / 4 ليالي"
+        data-price="2550"
+        data-details="فنادق 4 نجوم شامل الفطور|استقبال وتوديع|جولة صبنجة|جولة بورصة|جولة جزيرة الأميرات">
+        <img src="images/istanbul-5.jpg" alt="اسطنبول 5 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>اسطنبول — 5 أيام / 4 ليالي</h4>
+          <div class="price-line">2550 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
+
+  <!-- ====== اذربيجان ====== -->
+  <div class="offers-area">
+    <h3 class="area-title">🇦🇿 عروض أذربيجان</h3>
+
+    <div class="offers-grid">
+      <!-- 5 أيام -->
+      <div class="offer-card"
+        data-destination="أذربيجان"
+        data-duration="5 أيام / 4 ليالي"
+        data-price="2300"
+        data-details="فنادق 4 نجوم شامل الفطور|استقبال وتوديع|شرائح إنترنت لامحدود|تقسيم الإقامة: ليلتين غابالا + ليلتين باكو|جولة غابالا|جولة باكو|انتقالات بين المدن">
+        <img src="images/azerbaijan5.jpeg" alt="أذربيجان 5 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>أذربيجان — 5 أيام / 4 ليالي</h4>
+          <div class="price-line">2300 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 أيام -->
+      <div class="offer-card"
+        data-destination="أذربيجان"
+        data-duration="7 أيام / 6 ليالي"
+        data-price="3000"
+        data-details="فنادق 4 نجوم شامل الفطور|استقبال وتوديع|شرائح إنترنت لامحدود|تقسيم الإقامة: ليلتين باكو + ليلتين غابالا + ليلتين باكو|جولة باكو|جولة غابالا|جولة شاهداغ|انتقالات بين المدن">
+        <img src="images/azerbaijan7.jpeg" alt="أذربيجان 7 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>أذربيجان — 7 أيام / 6 ليالي</h4>
+          <div class="price-line">3000 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 أيام -->
+      <div class="offer-card"
+        data-destination="أذربيجان"
+        data-duration="8 أيام / 7 ليالي"
+        data-price="3350"
+        data-details="فنادق 4 نجوم شامل الفطور|استقبال وتوديع|شرائح إنترنت لامحدود|تقسيم الإقامة: ليلتين باكو + ليلتين غابالا + 3 ليالي باكو|جولة باكو|جولة غابالا|جولة شاهداغ|جولة تسوق أبشيرون|انتقالات بين المدن">
+        <img src="images/azerbaijan8.jpeg" alt="أذربيجان 8 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>أذربيجان — 8 أيام / 7 ليالي</h4>
+          <div class="price-line">3350 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+		  
+        </div>
+		
+      </div>
+
+      <!-- 10 أيام (جديد حسب طلبك) -->
+      <div class="offer-card"
+        data-destination="أذربيجان"
+        data-duration="10 أيام / 9 ليالي"
+        data-price="(حددي السعر)"
+        data-details="فنادق 4 نجوم شامل الفطور|استقبال وتوديع|شرائح إنترنت لامحدود|تقسيم الإقامة: ليلتين باكو + ليلتين غابالا + ليلتين قوبا + 3 ليالي باكو|جولة باكو|جولة غابالا|جولة قوبا|انتقالات بين المدن">
+        <img src="images/azerbaijan10.jpeg" alt="أذربيجان 10 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>أذربيجان — 10 أيام / 9 ليالي</h4>
+          <div class="price-line">4200 للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+            <p class="mini-note"></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====== بولندا ====== -->
+  <div class="offers-area">
+    <h3 class="area-title">🇵🇱 عروض بولندا</h3>
+
+    <div class="offers-grid">
+      <!-- 6 أيام -->
+      <div class="offer-card"
+        data-destination="بولندا"
+        data-duration="6 أيام / 5 ليالي"
+        data-price="5500"
+        data-details="فنادق 4 نجوم (كراكوف) + شقة (زاكوباني)|شامل الفطور + استقبال وتوديع|شرائح إنترنت لامحدود|جولة زاكوباني|جولة جبل غوبالوفكا|الانتقال إلى كراكوف">
+        <img src="images/poland-6.jpg" alt="بولندا 6 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>بولندا — 6 أيام / 5 ليالي</h4>
+          <div class="price-line">5500 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 أيام -->
+      <div class="offer-card"
+        data-destination="بولندا"
+        data-duration="7 أيام / 6 ليالي"
+        data-price="5500"
+        data-details="فنادق 4 نجوم (كراكوف) + شقة (زاكوباني)|شامل الفطور + استقبال وتوديع|شرائح إنترنت لامحدود|جولة زاكوباني|جولة جبل غوبالوفكا|الانتقال إلى كراكوف">
+        <img src="images/poland-7.jpg" alt="بولندا 7 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>بولندا — 7 أيام / 6 ليالي</h4>
+          <div class="price-line">5500 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====== جورجيا ====== -->
+  <div class="offers-area">
+    <h3 class="area-title">🇬🇪 عروض جورجيا</h3>
+
+    <!-- ملاحظة عامة لعروض جورجيا -->
+    <div class="includes">
+      <p class="includes-title">✨ جميع العروض تشمل ⬇️</p>
+      <div>✅ شخصين وطفل أقل من 6 سنوات مجاناً 👫 + 👶</div>
+      <div>✅ الإقامة في فنادق فاخرة شاملة الإفطار بوفيه 🥐</div>
+      <div>✅ شرائح إنترنت لامحدود 📲</div>
+    </div>
+
+    <div class="offers-grid">
+
+      <!-- جورجيا 5 أيام -->
+      <div class="offer-card"
+        data-destination="جورجيا"
+        data-duration="5 أيام / 4 ليالي"
+        data-price="3100"
+        data-details="🏨 ليلتين تبليسي العاصمة|🏨 ليلة باكورياني|🏨 ليلة تبليسي|🚗 الانتقال إلى باكورياني|🗺️ جولة تبليسي|🗺️ جولة باكورياني">
+        <img src="images/georgia-5.jpeg" alt="جورجيا 5 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>جورجيا — 5 أيام / 4 ليالي</h4>
+          <div class="price-line">3100 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- جورجيا 7 أيام (معدل حسب طلبك) -->
+      <div class="offer-card"
+        data-destination="جورجيا"
+        data-duration="7 أيام / 6 ليالي"
+        data-price="4300"
+        data-details="🏨 ليلتين تبليسي العاصمة|🏨 ليلة جوداوري – جبال القوقاز|🏨 ليلتين باكورياني|🚗 الانتقال إلى جوداوري|🚗 الانتقال إلى باكورياني|🗺️ جولة تبليسي|🗺️ جولة جوداوري|🗺️ جولة باكورياني">
+        <img src="images/georgia-7.jpg" alt="جورجيا 7 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>جورجيا — 7 أيام / 6 ليالي</h4>
+          <div class="price-line">4300 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- جورجيا 8 أيام -->
+      <div class="offer-card"
+        data-destination="جورجيا"
+        data-duration="8 أيام / 7 ليالي"
+        data-price="4850"
+        data-details="🏨 ليلتين تبليسي العاصمة (Episode)|🏨 ليلة جوداوري – جبال القوقاز|🏨 ليلتين باكورياني|🏨 ليلة تبليسي العاصمة|🚗 الانتقال إلى جوداوري|🚗 الانتقال إلى باكورياني|🗺️ جولتين تبليسي|🗺️ جولة جوداوري|🗺️ جولة باكورياني">
+        <img src="images/georgia-8.jpg" alt="جورجيا 8 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>جورجيا — 8 أيام / 7 ليالي</h4>
+          <div class="price-line">4850 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+            <p class="mini-note">* رابط فندق Episode (للإطلاع): https://www.booking.com/hotel/ge/episode-tbilisi.en-gb.html</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- جورجيا 10 أيام -->
+      <div class="offer-card"
+        data-destination="جورجيا"
+        data-duration="10 أيام / 9 ليالي"
+        data-price="5750"
+        data-details="🏨 ليلتين تبليسي العاصمة|🏨 ليلتين باكورياني|🏨 ثلاث ليالي باتومي|🏨 ليلتين تبليسي العاصمة|🚗 الانتقال إلى جوداوري|🚗 الانتقال إلى باكورياني|🗺️ جولتين تبليسي|🗺️ جولة جوداوري|🗺️ جولة باتومي|🗺️ جولة باكورياني">
+        <img src="images/georgia-10.jpg" alt="جورجيا 10 ايام" class="offer-img">
+        <div class="offer-content">
+          <h4>جورجيا — 10 أيام / 9 ليالي</h4>
+          <div class="price-line">5750 ريال للشخصين</div>
+
+          <div class="btn-row">
+            <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+            <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+          </div>
+
+          <div class="details">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+	  
+
+    </div>
+  </div>
+  <!-- ====== دبي ====== -->
+<div class="offers-area">
+  <h3 class="area-title">🇦🇪 عروض دبي</h3>
+
+  <div class="offers-grid">
+
+    <!-- دبي + ياس آيلاند -->
+    <div class="offer-card"
+      data-destination="دبي + ياس آيلاند"
+      data-duration="6 أيام / 5 ليالي"
+      data-price="7900"
+      data-details="3 ليالي دبي + ليلتين ياس آيلاند|🎢 دخول مدينتين ترفيهيتين (فيراري / وورنر / ياس ووتروورلد)|🚁 جولة هليكوبتر|🏜️ سفاري صحراوي|🚗 انتقالات كاملة">
+      <img src="images/dubai-yas.jpg" alt="Dubai Yas" class="offer-img">
+      <div class="offer-content">
+        <h4>Luxury Dubai & Yas Island — 6 أيام / 5 ليالي</h4>
+        <div class="price-line">7900 ريال للشخصين</div>
+
+        <div class="btn-row">
+          <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+          <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+        </div>
+
+        <div class="details">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloom Dubai -->
+    <div class="offer-card"
+      data-destination="دبي"
+      data-duration="5 أيام / 4 ليالي"
+      data-price="3100"
+      data-details="🏨 4 ليالي فندق مع الإفطار|🚗 استقبال وتوديع|🌆 جولة مدينة دبي|🏜️ سفاري صحراوي مع عشاء BBQ|🛳️ عشاء كروز الداو|📍 برج خليفة|🌸 ميراكل جاردن|🖼️ دبي فريم|🎡 القرية العالمية">
+      <img src="images/bloom-dubai.jfif" alt="Bloom Dubai" class="offer-img">
+      <div class="offer-content">
+        <h4>Bloom Dubai — 5 أيام / 4 ليالي</h4>
+        <div class="price-line">3100 ريال للشخصين</div>
+
+        <div class="btn-row">
+          <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+          <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+        </div>
+
+        <div class="details">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====== ألبانيا ====== -->
+<div class="offers-area">
+  <h3 class="area-title">🇦🇱 عروض ألبانيا</h3>
+
+  <div class="offers-grid">
+
+    <!-- ألبانيا 6 أيام -->
+    <div class="offer-card"
+      data-destination="ألبانيا"
+      data-duration="6 أيام / 5 ليالي"
+      data-price="5600"
+      data-details="🏨 2 ليلة تيرانا|🏨 2 ليلة شكودرا|🏨 ليلة تيرانا|🗺️ زيارة: تيرانا – دايتي – شكودرا – ثيث – كرويا|🚗 تنقلات بين المدن|🧭 جولات سياحية">
+      <img src="images/albania-6.jpg" alt="Albania 6 Days" class="offer-img">
+      <div class="offer-content">
+        <h4>ألبانيا — 6 أيام / 5 ليالي</h4>
+        <div class="price-line">5600 ريال للشخصين</div>
+
+        <div class="btn-row">
+          <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+          <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+        </div>
+
+        <div class="details">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====== ألبانيا + كوسوفو ====== -->
+<div class="offers-area">
+  <h3 class="area-title">🇦🇱🇽🇰 عروض ألبانيا + كوسوفو</h3>
+
+  <div class="offers-grid">
+
+    <!-- ألبانيا + كوسوفو -->
+    <div class="offer-card"
+      data-destination="ألبانيا + كوسوفو"
+      data-duration="8 أيام / 7 ليالي"
+      data-price="7100"
+      data-details="🏨 2 ليلة تيرانا|🏨 2 ليلة شكودرا|🏨 2 ليلة بريزرين|🏨 ليلة تيرانا|🗺️ زيارة: تيرانا – دايتي – شكودرا – ثيث – بريزرين – بيا|✈️ استقبال وتوديع|🍽️ إفطار بوفيه|🚗 جولات وتنقلات">
+      <img src="images/albania-kosovo.jpg" alt="Albania Kosovo" class="offer-img">
+      <div class="offer-content">
+        <h4>ألبانيا + كوسوفو — 8 أيام / 7 ليالي</h4>
+        <div class="price-line">7100 ريال للشخصين</div>
+
+        <div class="btn-row">
+          <button class="secondary-btn toggle-details">📌 عرض التفاصيل</button>
+          <a href="#" class="primary-btn wa-btn" target="_blank">💬 اطلب هذا العرض</a>
+        </div>
+
+        <div class="details">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  
+
 </section>
+
+<script>
+  // =========================
+  // CONFIG
+  // =========================
+  const WA_NUMBER = "966564676885";
+
+  // =========================
+  // Helpers
+  // =========================
+  function buildDetailsList(card){
+    const detailsRaw = card.dataset.details || "";
+    const items = detailsRaw.split("|").map(s => s.trim()).filter(Boolean);
+
+    const ul = card.querySelector(".details ul");
+    ul.innerHTML = "";
+    items.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      ul.appendChild(li);
+    });
+  }
+
+  function buildWhatsAppText(card){
+    const destination = card.dataset.destination || "";
+    const duration = card.dataset.duration || "";
+    const price = card.dataset.price || "";
+    const detailsRaw = card.dataset.details || "";
+
+    const detailsLines = detailsRaw
+      .split("|")
+      .map(s => s.trim())
+      .filter(Boolean)
+      .map(s => `- ${s}`)
+      .join("\n");
+
+    // رسالة واتساب (واضحة ومرتبة)
+    const msg =
+`حاب/ة اطلب هذا العرض ✨
+الوجهة: ${destination}
+المدة: ${duration}
+السعر: ${price} ريال للشخصين
+
+تفاصيل العرض:
+${detailsLines}
+
+ممكن ترسلون المتاح والتواريخ؟`;
+
+    return msg;
+  }
+
+  function setWhatsAppLink(card){
+    const a = card.querySelector(".wa-btn");
+    const text = buildWhatsAppText(card);
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+    a.setAttribute("href", url);
+  }
+
+  // =========================
+  // Init
+  // =========================
+  document.querySelectorAll(".offer-card").forEach(card => {
+    buildDetailsList(card);
+    setWhatsAppLink(card);
+
+    const btn = card.querySelector(".toggle-details");
+    const detailsBox = card.querySelector(".details");
+
+    btn.addEventListener("click", () => {
+      const isOpen = detailsBox.classList.toggle("open");
+      btn.textContent = isOpen ? "➖ إخفاء التفاصيل" : "📌 عرض التفاصيل";
+    });
+  });
+</script>
+
 
 
   <!-- =========================
